@@ -64,11 +64,62 @@ public class Calculator extends JFrame {
 			for(int i = 0 ; i < 4 ; i++) {
 				for(int j = 0 ; j < 4 ; j++) {
 					if(e.getSource() == button[i][j]) {
-						result.setText(result.getText() + button[i][j].getText());
+						if(button[i][j].getText() == "C") {
+							String tmp = result.getText();
+							tmp = tmp.substring(0,tmp.length()-1);
+							result.setText(tmp);
+						}
+						else if(button[i][j].getText() == "del") {
+							result.setText("");
+						}else if(button[i][j].getText() == "=") {
+							if(result.getText() == "") {
+								result.setText(result.getText());;
+							}else {
+								result.setText(String.valueOf(Convert(result.getText())));
+//								int a = Convert(result.getText());
+							}
+						}
+						else {
+							result.setText(result.getText() + button[i][j].getText());
+						}
 					}
+						
 				}
 			}
+		}	
+	}
+	public static int Convert(String s) {
+		String form = "";
+		String a = "";
+		String b = "";
+		System.out.println(s);
+		for(int i = 0 ; i < s.length() ; i++) {
+			
+			if(s.charAt(i) == '+' || s.charAt(i) == '/' || s.charAt(i) == '*' || s.charAt(i) == '-') {
+				form += s.charAt(i);
+			}else{
+				if(form == "") a += s.charAt(i);
+				if(form != "") b += s.charAt(i);
+			}
 		}
-		
+		System.out.println(a);
+		System.out.print(b);
+		if(form.equals("+")) return Sum(Integer.parseInt(a),Integer.parseInt(b));
+		if(form.equals("-")) return T(Integer.parseInt(a),Integer.parseInt(b));
+		if(form.equals("+*")) return Multi(Integer.parseInt(a),Integer.parseInt(b));
+		if(form.equals("/")) return Div(Integer.parseInt(a),Integer.parseInt(b));
+		return 0;
+	}
+	public static int Sum(int a,int b) {
+		return a + b;
+	}
+	public static int Multi(int a,int b) {
+		return a*b;
+	}
+	public static int Div(int a,int b) {
+		return a/b;
+	}
+	public static int T(int a,int b) {
+		return a-b;
 	}
 }
