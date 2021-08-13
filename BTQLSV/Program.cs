@@ -58,16 +58,26 @@ namespace CsharpTutorial
         }
         public void showInfor()
         {
-            Console.WriteLine(this.ID);
-            Console.WriteLine(this.Name);
-            Console.WriteLine(this.Sex);
-            Console.WriteLine(this.Age);
-            Console.WriteLine(this.HocLuc);
+            Console.WriteLine("--------------------------------");
+            Console.WriteLine("ID : "+this.ID);
+            Console.WriteLine("Name : " + this.Name);
+            Console.WriteLine("Sex : " + this.Sex);
+            Console.WriteLine("Age : " + this.Age);
+            Console.WriteLine("Hoc luc : " + this.HocLuc);
+            Console.WriteLine("--------------------------------");
         }
         public void showAllStudent()
         {
-            foreach(Student s in ListStudent){
-                s.showInfor();
+            if (ListStudent.Count > 0)
+            {
+                foreach (Student sv in ListStudent)
+                {
+                    Console.WriteLine("{0, -5} {1, -20} {2, -5} {3, 5} {4, 5} {5, 5} {6, 5} {7, 10} {8, 10}",
+                    "ID", "Name", "Sex", "Age", "Toan", "Ly", "Hoa", "Diem TB", "Hoc Luc");
+                    Console.WriteLine("{0, -5} {1, -20} {2, -5} {3, 5} {4, 5} {5, 5} {6, 5} {7, 10} {8, 10}",
+                                          sv.ID, sv.Name, sv.Sex, sv.Age, sv.DiemToan, sv.DiemLy, sv.DiemHoa,
+                                          sv.DiemTB, sv.HocLuc);
+                }
             }
         }
         public void insertStudent(){
@@ -124,12 +134,37 @@ namespace CsharpTutorial
             Student s = findID(id);
             ListStudent.Remove(s);
         }
+        public void findByName(string name)
+        {
+            foreach(Student s in ListStudent){
+                if (s.name == name)
+                {
+                    s.showInfor();
+                    break;
+                }
+            }
+        }
         public Student findID(int id)
         {
             foreach(Student st in ListStudent){
                 if(st.ID == id) return st;
             }
             return null;
+        }
+        public void sortGPA()
+        {
+            for (int i = 0; i < ListStudent.Count; i++)
+            {
+                for (int j = 1; j < ListStudent.Count; j++)
+                {
+                    if (ListStudent[i].diemTB < ListStudent[j].diemTB)
+                    {
+                        Student tmp = ListStudent[i];
+                        ListStudent[i] = ListStudent[j];
+                        ListStudent[j] = tmp;
+                    }
+                }
+            }
         }
     }
     
@@ -148,9 +183,7 @@ namespace CsharpTutorial
                Console.WriteLine("**  3. Xoa sinh vien boi ID.                         **");
                Console.WriteLine("**  4. Tim kiem sinh vien theo ten.                  **");
                Console.WriteLine("**  5. Sap xep sinh vien theo diem trung binh (GPA). **");
-               Console.WriteLine("**  6. Sap xep sinh vien theo ten.                   **");
-               Console.WriteLine("**  7. Sap xep sinh vien theo ID.                    **");
-               Console.WriteLine("**  8. Hien thi danh sach sinh vien.                 **");
+               Console.WriteLine("**  6. Hien thi danh sach sinh vien.                 **");
                Console.WriteLine("**  0. Thoat                                         **");
                Console.WriteLine("*******************************************************");
                Console.Write("Nhap tuy chon: ");
@@ -171,6 +204,14 @@ namespace CsharpTutorial
                        st.deteleStudent(id);
                        break;
                    case 4:
+                       Console.Write("Nhap ten sinh vien can tim : ");
+                       string name = Console.ReadLine();
+                       st.findByName(name);
+                       break;
+                   case 5:
+                       st.sortGPA();
+                       break;
+                   case 6:
                        st.showAllStudent();
                        break;
 
