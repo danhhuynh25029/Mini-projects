@@ -108,7 +108,7 @@ public class Game extends JFrame{
 						else { 
 							if(b[i][j].getText() == "") {
 								b[i][j].setForeground(new Color(0,0,255));
-								b[i][j].setText("0");
+								b[i][j].setText("O");
 								check += 1;
 							}
 						}
@@ -117,8 +117,8 @@ public class Game extends JFrame{
 			}
 		}
 		if(check() == true) {
-			if((check-1) % 2 == 0) label.setText("1 Win");
-			else label.setText("2 Win");
+			if((check-1) % 2 == 0) label.setText("X Win");
+			else label.setText("O Win");
 		}
 		if(label.getText() != "" && e.getSource() == clear){
 			label.setText("");
