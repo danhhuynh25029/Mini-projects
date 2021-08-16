@@ -1,4 +1,4 @@
-package Display;
+// package Display;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Font;
@@ -42,7 +42,7 @@ public class Calculator extends JFrame {
 					button[i][j].setText(String.valueOf(number));
 				}
 				button[i][j].addActionListener(new CustomListener());
-				button[i][j].setBackground(Color.WHITE);
+				// button[i][j].setBackground(Color.WHITE);
 				button[i][j].setFont(new Font(button[i][j].getName(),Font.BOLD,30));
 				add(button[i][j]);
 				number += 1;
@@ -53,6 +53,7 @@ public class Calculator extends JFrame {
 		setLayout(null);
 		setResizable(false);
 		setVisible(true);
+		setLocationRelativeTo(null);
 	}
 	public static void main(String[] args) {
 		new Calculator();
