@@ -1,0 +1,19 @@
+<a href="insert">Insert</a>
+<h1>USER</h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Code</th>
+  </tr>
+{{#each rs}}
+<tr>
+  <td>{{this.id}}</td>
+  <td>{{this.name}}</td>
+  <td>{{this.phone}}</td>
+  <td>{{this.code}}</td>
+  <td><a href="delete?id={{this.id}}">Delete</a></td>
+</tr>
+{{/each}}
+</table>
