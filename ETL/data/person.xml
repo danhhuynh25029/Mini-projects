@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <row>
+    <Name>Peter</Name>
+    <Age>42</Age>
+    <City>New York</City>
+  </row>
+  <row>
+    <Name>Paul</Name>
+    <Age>57</Age>
+    <City>London</City>
+  </row>
+  <row>
+    <Name>Mary</Name>
+    <Age>35</Age>
+    <City>Munich</City>
+  </row>
+  <row>
+    <Name>Jaques</Name>
+    <Age>66</Age>
+    <City>Paris</City>
+  </row>
+  <row>
+    <Name>Yuri</Name>
+    <Age>23</Age>
+    <City>Moscow</City>
+  </row>
+  <row>
+    <Name>Stefanie</Name>
+    <Age>47</Age>
+    <City>Stockholm</City>
+  </row>
+  <row>
+    <Name>Nadia</Name>
+    <Age>29</Age>
+    <City>Madrid</City>
+  </row>
+</root>
